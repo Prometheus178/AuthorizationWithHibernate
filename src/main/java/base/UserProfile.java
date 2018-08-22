@@ -1,8 +1,8 @@
 package base;
 
 public class UserProfile {
-    String login;
-    String password;
+    private String login;
+    private String password;
 
     public UserProfile(String login, String password) {
         this.login = login;
@@ -13,15 +13,9 @@ public class UserProfile {
         return login;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+
 }

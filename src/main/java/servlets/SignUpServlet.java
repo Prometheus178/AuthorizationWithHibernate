@@ -1,11 +1,11 @@
 package servlets;
 
-import base.AccountService;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class SignUpServlet extends HttpServlet {
     private final AccountServiceImplement accountServiceImplement;
@@ -17,7 +17,11 @@ public class SignUpServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
-        accountServiceImplement.signUp(login,password);
+        try {
+            accountServiceImplement.signUp(login,password);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         response.setContentType("text/html;charset=utf-8");
         response.getWriter().print("SignedUp");
